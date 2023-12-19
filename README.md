@@ -14,6 +14,8 @@
 
 Bamboo Tools is a Blender Addon for helping with various base model tasks specifically 
 targeted around Panda's Female Base v2(and some v1). 
+  
+  Please read thru the README, it goes thru how to install the addon properly and some use cases for the various functions!
 
 ## Functionality
 
@@ -21,6 +23,9 @@ targeted around Panda's Female Base v2(and some v1).
 * Shapekey Presets
 * Female Base v1 Asset Conversion help
 * Automatic NSFW-mesh "installation".
+
+  (More is planned for later, but this first version focuses on making it easier
+  to transition from v1 to v2)
 
 ## Installation
 
