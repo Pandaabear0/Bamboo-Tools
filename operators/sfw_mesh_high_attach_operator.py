@@ -94,6 +94,7 @@ class OBJECT_OT_SfwMeshHighAttach(bpy.types.Operator):
             bpy.ops.mesh.select_all(action='SELECT')
             bpy.ops.mesh.remove_doubles(threshold=0.001)
             bpy.ops.mesh.select_mode(type="VERT")
+            bpy.ops.mesh.select_all(action='DESELECT')
             bpy.ops.mesh.select_non_manifold()
             bpy.ops.mesh.delete(type='FACE')
             bpy.ops.object.mode_set(mode='OBJECT')
