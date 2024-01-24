@@ -14,6 +14,7 @@
 
 Bamboo Tools is a Blender Addon for helping with various base model tasks specifically 
 targeted around Panda's Female Base v2(and some v1). 
+You will NEED to update your v2 to the latest version from Gumroad(update 1.2+).
 
 ## Functionality
 
