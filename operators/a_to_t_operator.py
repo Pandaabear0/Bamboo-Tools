@@ -65,12 +65,21 @@ class POSE_OT_AtoT(bpy.types.Operator):
         bpy.ops.pose.armature_apply()
         bpy.ops.object.mode_set(mode='OBJECT')
 
-        # Copy over the shapekeys from the temporary object to the original mesh object
-        bpy.context.view_layer.objects.active = mesh_obj
-        mesh_obj.select_set(True)
-        temp_obj.select_set(True)
-        bpy.ops.object.join_shapes()
-        temp_obj.select_set(False)
+        # Iterate over all shape keys in the temporary object
+        if temp_obj.data.shape_keys:
+            key_blocks = temp_obj.data.shape_keys.key_blocks
+            for key_name in key_blocks.keys():
+                if key_name != 'Basis':  # Skip the 'Basis' shape key
+                    # Add a new shape key to the original mesh object for each shape key in the temp object
+                    original_shape_key = mesh_obj.shape_key_add(name=key_name, from_mix=False)
+                    original_shape_key.value = key_blocks[key_name].value
+
+                    # Copy the vertex positions from the temp object's shape key to the original object's new shape key
+                    for i, vert in enumerate(temp_obj.data.vertices):
+                        original_shape_key.data[i].co = key_blocks[key_name].data[i].co
+
+        # Delete the temporary object after copying all shape keys
+        bpy.data.objects.remove(temp_obj, do_unlink=True)
 
         # Apply a new armature modifier with the previous armature as the object
         new_arm_mod = mesh_obj.modifiers.new(name="Armature", type='ARMATURE')
