@@ -6,13 +6,13 @@ class POSE_OT_AtoT(bpy.types.Operator):
     bl_idname = "pose.rotate_atot"
     bl_label = "Rotate A to T"
 
-Check if the active object is an armature
+#Check if the active object is an armature
     def execute(self, context):
         if context.active_object.type != 'ARMATURE':
             self.report({'ERROR'}, "Please select an armature.")
             return {'CANCELLED'}
 
-Create a dictionary with selected bones and their respective values
+#Create a dictionary with selected bones and their respective values
         bone_rotations = {
             "Left shoulder": -10.7,
             "Right shoulder": 10.7,
@@ -31,7 +31,7 @@ Create a dictionary with selected bones and their respective values
                 if bone.rotation_mode not in {'XYZ', 'XZY', 'YXZ', 'YZX', 'ZXY', 'ZYX'}:
                     bone.rotation_mode = 'XYZ' 
 
-Apply the rotation around the Y-axis in radians
+#Apply the rotation around the Y-axis in radians
                 bone.rotation_euler[2] += math.radians(rotation_deg)
             else:
                 self.report({'ERROR'}, f"Bone '{bone_name}' not found.")
