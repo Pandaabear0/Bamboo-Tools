@@ -14,10 +14,10 @@ class POSE_OT_TtoA(bpy.types.Operator):
 
 #Create a dictionary with selected bones and their respective values
         bone_rotations = {
-            "Left shoulder": -10.7,
-            "Right shoulder": 10.7,
-            "Left arm": -29.54,
-            "Right arm": 29.54,
+            "Left shoulder": 10.7,
+            "Right shoulder": -10.7,
+            "Left arm": 29.54,
+            "Right arm": -29.54,
         }
 
         # Ensure pose mode is set
