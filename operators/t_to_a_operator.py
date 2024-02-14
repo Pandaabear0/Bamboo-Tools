@@ -1,10 +1,10 @@
 import bpy
 import math
 
-class POSE_OT_AtoT(bpy.types.Operator):
-    """Rotate from A to T pose"""
-    bl_idname = "pose.rotate_atot"
-    bl_label = "Rotate A to T"
+class POSE_OT_TtoA(bpy.types.Operator):
+    """Rotate from T to A pose"""
+    bl_idname = "pose.rotate_ttoa"
+    bl_label = "Rotate T to A"
 
     def execute(self, context):
         if context.active_object.type != 'ARMATURE':
